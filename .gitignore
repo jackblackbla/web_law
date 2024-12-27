@@ -1,0 +1,15 @@
+# Node modules
+node_modules/
+
+# 빌드 결과물
+dist/
+.parcel-cache/
+build/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.log
+
+# 환경변수, 개인키
+.env
