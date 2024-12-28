@@ -1,0 +1,880 @@
+@use '../../styles/utils/mixins' as *;
+@use '../../styles/utils/variables' as *;
+
+.sliderWrap {
+  max-width: 160rem;
+  margin: 0 auto;
+  padding: 8rem 2rem;
+  position: relative;
+
+  .sectionHeader {
+    text-align: center;
+    margin-bottom: 6rem;
+    
+    .sectionTitle {
+      font-size: 10rem;
+      color: #1c1c1c;
+      letter-spacing: 0;
+      display: flex;
+      align-items: flex-end;
+      gap: 0.8rem;
+      line-height: 1;
+      font-weight: 700;
+      font-family: 'Lora', serif;
+      text-transform: uppercase;
+      transition-property: opacity, transform;
+      transition-timing-function: ease;
+      transition-duration: 1s;
+      opacity: 1;
+      transform: translateZ(0);
+      margin-bottom: 8rem;
+
+      &::after {
+        content: "";
+        width: 1.6rem;
+        height: 1.6rem;
+        margin-bottom: 0.7rem;
+        border-radius: 50%;
+        background-color: #ffe141;
+      }
+    }
+    
+    .sectionDesc {
+      max-width: 72rem;
+      margin: 0 auto;
+      font-size: 1.8rem;
+      line-height: 1.6;
+      color: $gray-02;
+    }
+  }
+
+  .serviceContainer {
+    flex-shrink: 0;
+    height: 100%;
+    position: relative;
+    transition-property: transform, -webkit-transform;
+    padding-top: 20rem;
+    width: 524px;
+    margin-right: 144px;
+  }
+
+  .serviceList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11.3rem;
+    padding-left: 2rem;
+
+    li {
+      list-style: none;
+      box-sizing: border-box;
+      border-style: solid;
+      border-width: 0;
+      outline: 0;
+      font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: #1c1c1c;
+      -webkit-font-smoothing: antialiased;
+
+      a {
+        display: inline-block;
+        background-color: transparent;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        width: 51.2rem;
+        font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif;
+        font-size: 1.6rem;
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1.25;
+        -webkit-font-smoothing: antialiased;
+        word-break: keep-all;
+        box-sizing: border-box;
+        border-style: solid;
+        border-width: 0;
+        outline: 0;
+
+        .menu {
+          font-style: unset;
+          position: absolute;
+          left: -18.4rem;
+          top: 16.5rem;
+          width: 36.7rem;
+          font-weight: 600;
+          font-size: 3.2rem;
+          line-height: 1.3;
+          color: #1c1c1c;
+          letter-spacing: 0;
+          font-family: 'Lora', serif;
+          text-align: right;
+          text-transform: uppercase;
+          transform: rotate(-90deg);
+          z-index: 1;
+          -webkit-font-smoothing: antialiased;
+          word-break: keep-all;
+          box-sizing: border-box;
+          border-style: solid;
+          border-width: 0;
+          outline: 0;
+        }
+
+        .thumbnail {
+          img {
+            vertical-align: bottom;
+            object-fit: cover;
+            transition: transform 0.3s;
+            font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 0;
+            line-height: 1.25;
+            -webkit-font-smoothing: antialiased;
+            word-break: keep-all;
+            box-sizing: border-box;
+            border-style: solid;
+            border-width: 0;
+            outline: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .info {
+          .type {
+            font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+            word-break: keep-all;
+            list-style: none;
+            box-sizing: border-box;
+            border-style: solid;
+            border-width: 0;
+            outline: 0;
+            font-style: unset;
+            font-weight: 400;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: #999;
+            letter-spacing: 0;
+            display: block;
+            margin-bottom: 0.8rem;
+          }
+
+          // ... 기존 .tit 스타일 유지 ...
+        }
+      }
+    }
+  }
+
+  .cardThumb {
+    width: 100%;
+    height: 35rem;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .cardInfo {
+    padding: 3rem 0;
+
+    .cardTitle {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 1.6rem;
+    }
+
+    .cardDesc {
+      line-height: 1.6;
+      color: #555;
+      word-break: keep-all;
+    }
+  }
+
+  .swiperWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform, -webkit-transform;
+    box-sizing: content-box;
+    transform: translate3d(0px, 0px, 0px);
+    transition-duration: 0ms;
+  }
+
+  .swiperSlide {
+    flex-shrink: 0;
+    width: 524px;
+    margin-right: 144px;
+    height: 100%;
+    position: relative;
+    transition-property: transform, -webkit-transform;
+
+    &:nth-child(even) {
+      padding-top: 20rem;
+    }
+  }
+
+  .highlightList {
+    display: flex;
+    flex-direction: column;
+    gap: 11.3rem;
+    padding-left: 2rem;
+
+    li {
+      a {
+        display: inline-block;
+        position: relative;
+        width: 51.2rem;
+        text-decoration: none;
+        color: inherit;
+
+        .menu {
+          position: absolute;
+          left: -18.4rem;
+          top: 16.5rem;
+          width: 36.7rem;
+          font-family: 'Lora', serif;
+          font-size: 3.2rem;
+          font-weight: 600;
+          line-height: 1.3;
+          text-align: right;
+          text-transform: uppercase;
+          transform: rotate(-90deg);
+          z-index: 1;
+        }
+
+        .thumbnail {
+          width: 100%;
+          height: 34rem;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            vertical-align: bottom;
+            transition: transform 0.3s;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes flowAnimation {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.card {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  outline: 0;
+  list-style: none;
+  font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+  
+  .cardThumb {
+    width: 100%;
+    height: 35rem;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .cardInfo {
+    padding: 3rem 0;
+
+    .cardTitle {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #1c1c1c;
+      margin-bottom: 1.6rem;
+    }
+
+    .cardDesc {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      color: #555;
+      word-break: keep-all;
+    }
+  }
+
+  &:hover {
+    .cardThumb img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// 반응형
+@media (max-width: 1024px) {
+  .sliderWrap {
+    padding: 6rem 2rem;
+    
+    .sectionHeader {
+      margin-bottom: 4rem;
+      
+      .sectionTitle {
+        font-size: 3.2rem;
+      }
+      
+      .sectionDesc {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  .card {
+    height: 44rem;
+    
+    .cardThumb {
+      height: 22rem;
+    }
+    
+    .cardInfo {
+      padding: 2.4rem;
+      height: 22rem;
+      
+      .cardTitle {
+        font-size: 2rem;
+      }
+      
+      .cardDesc {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    height: 40rem;
+    
+    .cardThumb {
+      height: 20rem;
+    }
+    
+    .cardInfo {
+      padding: 2rem;
+      height: 20rem;
+    }
+  }
+}
+
+.innerWrap {
+  line-height: 1.25;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  word-break: keep-all;
+  --head: 100px;
+  --footer: 574.688px;
+  --mfooter: -574.688px;
+  --height: 1328px;
+  color: #1c1c1c;
+  font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  outline: 0;
+  position: relative;
+  width: 100%;
+  max-width: 160rem;
+  margin: 0 auto;
+
+  .sliderWrap {
+    line-height: 1.25;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    word-break: keep-all;
+    --head: 100px;
+    --footer: 574.688px;
+    --mfooter: -574.688px;
+    --height: 1328px;
+    color: #1c1c1c;
+    font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 0;
+    outline: 0;
+    position: relative;
+    transition-property: opacity, transform;
+    transition-timing-function: ease;
+    transition-duration: 1s;
+    opacity: 1;
+    transform: translateZ(0);
+    transition-delay: .3s;
+    width: 119.2rem;
+    margin: 0 0 0 auto;
+
+    :global(.swiper-wrapper) {
+      line-height: 1.25;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+      word-break: keep-all;
+      --head: 100px;
+      --footer: 574.688px;
+      --mfooter: -574.688px;
+      --height: 1328px;
+      color: #1c1c1c;
+      font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+      border-style: solid;
+      border-width: 0;
+      outline: 0;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: flex;
+      transition-property: transform, -webkit-transform;
+      box-sizing: content-box;
+      transform: translate3d(0px, 0px, 0px);
+      transition-duration: 0ms;
+    }
+
+    :global(.swiper-slide) {
+      line-height: 1.25;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+      word-break: keep-all;
+      --head: 100px;
+      --footer: 574.688px;
+      --mfooter: -574.688px;
+      --height: 1328px;
+      color: #1c1c1c;
+      font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+      border-style: solid;
+      border-width: 0;
+      outline: 0;
+      flex-shrink: 0;
+      height: 100%;
+      position: relative;
+      transition-property: transform, -webkit-transform;
+      padding-top: 20rem;
+      width: 524px;
+      margin-right: 144px;
+
+      .highlightList {
+        line-height: 1.25;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+        word-break: keep-all;
+        --head: 100px;
+        --footer: 574.688px;
+        --mfooter: -574.688px;
+        --height: 1328px;
+        color: #1c1c1c;
+        font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+        font-size: 1.6rem;
+        font-weight: 400;
+        letter-spacing: 0;
+        -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
+        border-style: solid;
+        border-width: 0;
+        outline: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 11.3rem;
+        padding-left: 2rem;
+
+        li {
+          line-height: 1.25;
+          -webkit-text-size-adjust: 100%;
+          -webkit-tap-highlight-color: transparent;
+          word-break: keep-all;
+          --head: 100px;
+          --footer: 574.688px;
+          --mfooter: -574.688px;
+          --height: 1328px;
+          color: #1c1c1c;
+          font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+          font-size: 1.6rem;
+          font-weight: 400;
+          letter-spacing: 0;
+          -webkit-font-smoothing: antialiased;
+          list-style: none;
+          box-sizing: border-box;
+          border-style: solid;
+          border-width: 0;
+          outline: 0;
+
+          a {
+            line-height: 1.25;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            word-break: keep-all;
+            --head: 100px;
+            --footer: 574.688px;
+            --mfooter: -574.688px;
+            --height: 1328px;
+            font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 0;
+            -webkit-font-smoothing: antialiased;
+            list-style: none;
+            box-sizing: border-box;
+            border-style: solid;
+            border-width: 0;
+            outline: 0;
+            display: inline-block;
+            background-color: transparent;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            width: 51.2rem;
+
+            .menu {
+              -webkit-text-size-adjust: 100%;
+              -webkit-tap-highlight-color: transparent;
+              word-break: keep-all;
+              --head: 100px;
+              --footer: 574.688px;
+              --mfooter: -574.688px;
+              --height: 1328px;
+              -webkit-font-smoothing: antialiased;
+              list-style: none;
+              box-sizing: border-box;
+              border-style: solid;
+              border-width: 0;
+              outline: 0;
+              font-style: unset;
+              position: absolute;
+              left: -18.4rem;
+              top: 16.5rem;
+              width: 36.7rem;
+              font-weight: 600;
+              font-size: 3.2rem;
+              line-height: 1.3;
+              color: #1c1c1c;
+              letter-spacing: 0;
+              font-family: Lora;
+              text-align: right;
+              text-transform: uppercase;
+              transform: rotate(-90deg);
+              z-index: 1;
+            }
+
+            .info {
+              line-height: 1.25;
+              -webkit-text-size-adjust: 100%;
+              -webkit-tap-highlight-color: transparent;
+              word-break: keep-all;
+              --head: 100px;
+              --footer: 574.688px;
+              --mfooter: -574.688px;
+              --height: 1328px;
+              font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+              font-size: 1.6rem;
+              font-weight: 400;
+              letter-spacing: 0;
+              -webkit-font-smoothing: antialiased;
+              list-style: none;
+              color: inherit;
+              box-sizing: border-box;
+              border-style: solid;
+              border-width: 0;
+              outline: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 2.4rem;
+              padding-top: 2.4rem;
+
+              .type {
+                -webkit-text-size-adjust: 100%;
+                -webkit-tap-highlight-color: transparent;
+                word-break: keep-all;
+                --head: 100px;
+                --footer: 574.688px;
+                --mfooter: -574.688px;
+                --height: 1328px;
+                font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+                -webkit-font-smoothing: antialiased;
+                list-style: none;
+                box-sizing: border-box;
+                border-style: solid;
+                border-width: 0;
+                outline: 0;
+                font-style: unset;
+                font-weight: 400;
+                font-size: 1.6rem;
+                line-height: 1.6;
+                color: #999;
+                letter-spacing: 0;
+              }
+
+              .tit {
+                -webkit-text-size-adjust: 100%;
+                -webkit-tap-highlight-color: transparent;
+                word-break: keep-all;
+                --head: 100px;
+                --footer: 574.688px;
+                --mfooter: -574.688px;
+                --height: 1328px;
+                font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+                -webkit-font-smoothing: antialiased;
+                list-style: none;
+                box-sizing: border-box;
+                border-style: solid;
+                border-width: 0;
+                outline: 0;
+                height: 6.8rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                font-weight: 400;
+                font-size: 2.4rem;
+                line-height: 1.4;
+                color: #1c1c1c;
+                letter-spacing: -.01em;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    :global(.swiper-slide:nth-child(even)) {
+      margin-top: 20rem;
+    }
+
+    &::before {
+      content: '';
+      line-height: 1.25;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+      word-break: keep-all;
+      --head: 100px;
+      --footer: 574.688px;
+      --mfooter: -574.688px;
+      --height: 1328px;
+      color: #1c1c1c;
+      font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+      border-style: solid;
+      border-width: 0;
+      outline: 0;
+      display: inline-block;
+      position: absolute;
+      left: -88rem;
+      top: -10rem;
+      width: 176rem;
+      height: 176rem;
+      background-color: rgba(245, 245, 245, .6);
+      border-radius: 50%;
+      transform: translate(0px, 0px);
+      z-index: 1;
+    }
+
+    .swiperDragScroll {
+      &.active {
+        .swiperScrollbar {
+          transition-duration: 0ms;
+
+          .swiperScrollbarDrag {
+            line-height: 1.25;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            word-break: keep-all;
+            --head: 100px;
+            --footer: 574.688px;
+            --mfooter: -574.688px;
+            --height: 1328px;
+            color: #1c1c1c;
+            font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 0;
+            -webkit-font-smoothing: antialiased;
+            box-sizing: border-box;
+            border-style: solid;
+            border-width: 0;
+            outline: 0;
+            position: relative;
+            left: 0;
+            top: 0;
+            height: 2px;
+            background: #222;
+            border-radius: 0;
+            transform: translate3d(206.07px, 0px, 0px);
+            transition-duration: 0ms;
+            width: 367.718px;
+          }
+        }
+      }
+    }
+
+    :global(.swiper-drag-scroll) {
+      line-height: 1.25;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+      word-break: keep-all;
+      --head: 100px;
+      --footer: 574.688px;
+      --mfooter: -574.688px;
+      --height: 1328px;
+      color: #1c1c1c;
+      font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+      border-style: solid;
+      border-width: 0;
+      outline: 0;
+      overflow: hidden;
+      padding: 5.5rem 0 1.6rem;
+
+      &.active {
+        // ... 기존 스타일 유지 ...
+      }
+
+      :global(.swiper-scrollbar) {
+        line-height: 1.25;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+        word-break: keep-all;
+        --head: 100px;
+        --footer: 574.688px;
+        --mfooter: -574.688px;
+        --height: 1328px;
+        color: #1c1c1c;
+        font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+        font-size: 1.6rem;
+        font-weight: 400;
+        letter-spacing: 0;
+        -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
+        border-style: solid;
+        border-width: 0;
+        outline: 0;
+        position: relative;
+        border-radius: 0;
+        background: #ddd;
+        transition-duration: 0ms;
+
+        :global(.swiper-scrollbar-drag) {
+          line-height: 1.25;
+          -webkit-text-size-adjust: 100%;
+          -webkit-tap-highlight-color: transparent;
+          word-break: keep-all;
+          --head: 100px;
+          --footer: 574.688px;
+          --mfooter: -574.688px;
+          --height: 1328px;
+          color: #1c1c1c;
+          font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+          font-size: 1.6rem;
+          font-weight: 400;
+          letter-spacing: 0;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          border-style: solid;
+          border-width: 0;
+          outline: 0;
+          position: relative;
+          left: 0;
+          top: 0;
+          height: 2px;
+          background: #222;
+          border-radius: 0;
+          transform: translate3d(206.07px, 0px, 0px);
+          transition-duration: 0ms;
+          width: 367.718px;
+        }
+      }
+    }
+  }
+
+  .title {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    word-break: keep-all;
+    --head: 100px;
+    --footer: 574.688px;
+    --mfooter: -574.688px;
+    --height: 1328px;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 0;
+    outline: 0;
+    margin: 20rem 0 0 0;
+    font-size: 10rem;
+    color: #1c1c1c;
+    letter-spacing: 0;
+    display: flex;
+    align-items: flex-end;
+    gap: .8rem;
+    line-height: 1;
+    font-weight: 700;
+    transition-property: opacity, transform;
+    transition-timing-function: ease;
+    transition-duration: 1s;
+    opacity: 1;
+    transform: translateZ(0);
+    font-family: Lora;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 1.2rem;
+      height: 1.2rem;
+      background-color: #ffda2a;
+      border-radius: 50%;
+      margin-bottom: 1.6rem;
+    }
+  }
+} 

@@ -1,0 +1,868 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.mainPage {
+  .progressBar {
+    position: fixed;
+    left: 3.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 0.2rem;
+    height: 20rem;
+    background-color: #222;
+    
+    .current {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #ffee51;
+      transition: height 0.3s;
+    }
+  }
+
+  .bannerSection {
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+    .bannerList {
+      display: flex;
+      align-items: center;
+      gap: 13rem;
+      flex-shrink: 0;
+      overflow: hidden;
+      padding-right: 13rem;
+      
+      li {
+        img {
+          height: 8rem;
+          filter: grayscale(100%);
+          transition: filter 0.3s;
+          
+          &:hover {
+            filter: grayscale(0);
+          }
+        }
+      }
+    }
+  }
+
+  .heroSection {
+    position: relative;
+    padding: 8rem 0 25rem;
+
+    .scroll {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: 0;
+      top: 54.5rem;
+      transform: rotate(-90deg);
+      
+      span {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        @include text(400, 1.6rem, 1.6);
+        font-family: $en;
+        
+        &::before {
+          content: "";
+          width: 2.7rem;
+          height: 4.3rem;
+          transform: rotate(90deg);
+          @include backgroundImg("/images/icon/ico-scroll-arrow.svg", "center", "contain");
+        }
+      }
+    }
+
+    .innerWrap {
+      .textBox {
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        padding: 16rem 0 0 12rem;
+        
+        strong {
+          display: block;
+          font-family: $en;
+          
+          .titDot:nth-of-type(2) {
+            padding-left: 13rem;
+          }
+        }
+        
+        .text {
+          display: block;
+          margin-top: 5rem;
+          @include text(400, 2.4rem, 1.4);
+        }
+      }
+
+      .circleBox {
+        display: flex;
+        justify-content: flex-end;
+        padding-left: 41.6rem;
+        
+        > div {
+          flex-shrink: 0;
+          position: relative;
+          width: 63.6rem;
+          height: 63.6rem;
+          border-radius: 50%;
+        }
+        
+        .left {
+          left: 20rem;
+          border: 1px solid $black;
+        }
+        
+        .right {
+          top: 16rem;
+          
+          .inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            
+            video {
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              object-fit: cover;
+              opacity: 0;
+              visibility: hidden;
+              transition: all 0.2s;
+              
+              &.on {
+                opacity: 1;
+                visibility: visible;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include response("mobile") {
+  .mainPage {
+    .progressBar {
+      display: none;
+    }
+
+    .bannerSection {
+      .bannerList {
+        gap: 3rem;
+        padding-right: 3rem;
+        
+        li img {
+          height: 5rem;
+        }
+      }
+    }
+
+    .heroSection {
+      padding: 4rem 0;
+      
+      .scroll {
+        display: none;
+      }
+      
+      .innerWrap {
+        .textBox {
+          height: auto;
+          padding: 0;
+          
+          strong {
+            .titDot:nth-of-type(2) {
+              padding-left: 2rem;
+            }
+          }
+          
+          .text {
+            margin-top: 0.6rem;
+            @include text(400, 1.6rem, 1.6);
+          }
+        }
+        
+        .circleBox {
+          padding-left: 0;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          
+          > div {
+            width: 31.2rem;
+            height: 31.2rem;
+          }
+          
+          .left {
+            left: 0;
+          }
+          
+          .right {
+            top: 0;
+            margin-top: -7rem;
+          }
+        }
+      }
+    }
+  }
+} 
+
+.sliderSection {
+  position: relative;
+  padding: 8rem 0 16.5rem;
+
+  .background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 176rem;
+    height: 176rem;
+    background-color: rgba(245, 245, 245, 0.6);
+    border-radius: 50%;
+    transform: scale(0);
+  }
+
+  .flowText {
+    position: absolute;
+    top: 35%;
+    right: -70%;
+    z-index: -1;
+    
+    span {
+      display: block;
+      @include text(400, 20rem, 1.05, rgba(221, 221, 221, 0.5));
+      font-family: $en;
+      white-space: nowrap;
+      cursor: default;
+      
+      &:last-of-type {
+        padding-left: 58rem;
+      }
+    }
+  }
+
+  .sliderWrap {
+    width: 119.2rem;
+    margin: 0 0 0 auto;
+
+    .highlightSlider {
+      :global(.swiper-slide:nth-of-type(odd)) {
+        padding-top: 20rem;
+      }
+    }
+
+    .highlightList {
+      display: flex;
+      flex-direction: column;
+      gap: 11.3rem;
+      padding-left: 2rem;
+
+      li {
+        a {
+          position: relative;
+          width: 51.2rem;
+
+          &:hover {
+            .thumbnail img {
+              transform: scale(1.1);
+            }
+            .info .title {
+              text-decoration: underline;
+            }
+          }
+
+          .menu {
+            position: absolute;
+            left: -18.4rem;
+            top: 16.5rem;
+            width: 36.7rem;
+            @include text(600, 3.2rem, 1.3);
+            font-family: $en;
+            text-align: right;
+            text-transform: uppercase;
+            transform: rotate(-90deg);
+            z-index: 1;
+          }
+
+          .thumbnail {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            height: 36.7rem;
+            overflow: hidden;
+
+            img {
+              object-fit: cover;
+              transition: transform 0.3s;
+            }
+          }
+
+          .info {
+            display: flex;
+            flex-direction: column;
+            gap: 2.4rem;
+            padding-top: 2.4rem;
+
+            .type {
+              @include text(400, 1.6rem, 1.6, #999);
+            }
+
+            .title {
+              height: 6.8rem;
+              @include multiEllipsis;
+              @include text(400, 2.4rem, 1.4, $black, -0.01em);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include response("mobile") {
+  .sliderSection {
+    padding: 0 0 8rem;
+
+    .boardMore {
+      margin-top: 5.2rem;
+      text-align: center;
+    }
+
+    .background {
+      left: -20rem;
+      width: 55.3rem;
+      height: 54.6rem;
+    }
+
+    .flowText {
+      display: none;
+    }
+
+    .sliderWrap {
+      width: 100%;
+      margin: 4rem 0 0 0;
+
+      .highlightSlider {
+        overflow: unset;
+
+        :global(.swiper-slide) {
+          width: auto;
+        }
+
+        :global(.swiper-slide:nth-of-type(odd)) {
+          padding-top: 0;
+        }
+
+        :global(.swiper-drag-scroll) {
+          display: none;
+        }
+      }
+
+      .highlightList {
+        gap: 4rem;
+        padding-left: 2rem;
+
+        li {
+          a {
+            width: 25.5rem;
+
+            .menu {
+              left: -9rem;
+              top: 8rem;
+              width: 18rem;
+              @include text(600, 1.8rem, 1.55);
+            }
+
+            .thumbnail {
+              height: 18rem;
+            }
+
+            .info {
+              gap: 1.6rem;
+              padding-top: 1rem;
+
+              .type {
+                @include text(400, 1.4rem, 1.7, #999);
+              }
+
+              .title {
+                height: 5.6rem;
+                @include text(400, 1.8rem, 1.55, $black, -0.01em);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} 
+
+.centerSection {
+  position: relative;
+  padding: 0 0 15rem;
+
+  .flowText {
+    position: absolute;
+    top: 15%;
+    right: -70%;
+    z-index: -1;
+    
+    span {
+      display: block;
+      @include text(400, 20rem, 1.05, rgba(221, 221, 221, 0.5));
+      font-family: $en;
+      white-space: nowrap;
+      cursor: default;
+      
+      &:last-of-type {
+        padding: 42rem 0 0 58rem;
+      }
+    }
+  }
+
+  .innerWrap {
+    .sectionTitle {
+      margin-bottom: 8rem;
+      font-family: $en;
+      text-transform: uppercase;
+    }
+
+    .centerSlider {
+      :global(.slick-slide) {
+        height: 0 !important;
+        &.slick-active {
+          height: 100% !important;
+        }
+      }
+
+      :global(.slick-list) {
+        overflow: unset;
+      }
+
+      :global(.slick-active) .centerInfo {
+        .thumbnail {
+          opacity: 1;
+        }
+        .info {
+          transform: translate3d(0, -50%, 0);
+          opacity: 1;
+        }
+      }
+
+      .centerInfo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        .thumbnail {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          width: 78.3rem;
+          height: 78.3rem;
+          border-radius: 50%;
+          overflow: hidden;
+          transition: all 1s;
+          transition-delay: 0.3s;
+          opacity: 0;
+
+          img {
+            object-fit: cover;
+            transition: transform 0.3s;
+          }
+        }
+
+        .info {
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translate3d(10%, -50%, 0);
+          width: 64.8rem;
+          padding: 7rem 6rem;
+          background-color: #fff;
+          border: 1px solid $black;
+          transition: all 1s;
+          transition-delay: 0.8s;
+          opacity: 0;
+
+          .title {
+            @include text(700, 3.2rem, 1.3, $black, -0.01em);
+          }
+
+          .text {
+            margin-top: 2.4rem;
+            @include text(400, 1.6rem, 1.6, $black, -0.01em);
+          }
+
+          .utilBox {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+
+            .page {
+              @include text(400, 1.6rem, 1.6);
+              font-family: $en;
+            }
+
+            .slideUtil {
+              display: flex;
+              align-items: center;
+              gap: 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.boardSection {
+  position: relative;
+  padding: 0 0 5rem;
+
+  .background {
+    position: absolute;
+    left: 0;
+    top: 6.7rem;
+    width: 0;
+    height: 78.3rem;
+    background-color: rgba(245, 245, 245, 0.6);
+  }
+
+  .boardMore {
+    margin-top: 0;
+  }
+
+  .sectionTitle {
+    margin-bottom: 8rem;
+    font-family: $en;
+    text-transform: uppercase;
+  }
+
+  .boardMore {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .arrowBox {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    position: absolute;
+    left: 0;
+    top: 12rem;
+  }
+
+  .boardImgList {
+    width: 108%;
+    padding-left: 40.6rem;
+
+    :global(.slick-list) {
+      padding-bottom: 3rem;
+    }
+
+    :global(.slick-track) {
+      display: flex;
+      gap: 3.2rem;
+
+      .boardCard {
+        width: 51.2rem;
+      }
+    }
+  }
+}
+
+@include response("mobile") {
+  .centerSection {
+    padding: 0 0 8rem;
+
+    .flowText {
+      display: none;
+    }
+
+    .innerWrap {
+      .sectionTitle {
+        margin-bottom: 4rem;
+      }
+
+      .centerSlider {
+        :global(.slick-active) .centerInfo {
+          .info {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+          }
+        }
+
+        .centerInfo {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          .thumbnail {
+            width: 31.2rem;
+            height: 31.2rem;
+          }
+
+          .info {
+            position: relative;
+            right: auto;
+            top: auto;
+            transform: translate3d(0, 10%, 0);
+            width: 100%;
+            padding: 3rem;
+            margin-top: -5rem;
+
+            .title {
+              @include text(700, 2.4rem, 1.4, $black, -0.01em);
+            }
+
+            .text {
+              height: auto;
+              margin-top: 1rem;
+            }
+
+            .utilBox {
+              flex-direction: column-reverse;
+              gap: 3rem;
+              margin-top: 3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .boardSection {
+    padding: 0 0 5rem;
+
+    .background {
+      top: 2.1rem;
+    }
+
+    .sectionTitle {
+      margin-bottom: 4rem;
+    }
+
+    .boardMore {
+      position: relative;
+      margin-top: 2.2rem;
+      text-align: center;
+    }
+
+    .arrowBox {
+      display: none;
+    }
+
+    .boardImgList {
+      padding-left: 0;
+
+      :global(.slick-track) {
+        gap: 2.4rem;
+
+        .boardCard {
+          width: 26rem;
+        }
+      }
+    }
+  }
+} 
+
+.careerSection {
+  position: relative;
+  padding: 16rem 0 0;
+
+  .background {
+    position: absolute;
+    left: 0;
+    top: 9.6rem;
+    width: 0;
+    max-width: 152rem;
+    height: 63.6rem;
+    background: linear-gradient(180deg, #ffe141 0%, rgba(245, 245, 245, 0) 100%);
+  }
+
+  .flowText {
+    position: absolute;
+    top: 20%;
+    right: -70%;
+    z-index: -1;
+    
+    span {
+      display: block;
+      @include text(400, 20rem, 1.05, #f4f3f0);
+      font-family: $en;
+      white-space: nowrap;
+      cursor: default;
+    }
+  }
+
+  .sectionTitle {
+    margin-bottom: 8rem;
+    font-family: $en;
+    text-transform: uppercase;
+  }
+
+  .sliderWrap {
+    .careerSlider {
+      :global(.slick-list) {
+        padding-top: 9.6rem;
+
+        :global(.slick-active) .careerInfo {
+          .thumbnail,
+          .info {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+        }
+
+        .careerInfo {
+          position: relative;
+
+          .thumbnail {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: 0;
+            top: -14rem;
+            width: 78.2rem;
+            height: 63rem;
+            transition: all 0.4s;
+            transition-delay: 1s;
+            transform: translate3d(10%, 0, 0);
+            opacity: 0;
+
+            img {
+              width: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .info {
+            display: flex;
+            flex-direction: column;
+            gap: 8rem;
+            padding: 15rem 13.6rem;
+            transition: all 0.5s;
+            transition-delay: 0.5s;
+            transform: translate3d(-10%, 0, 0);
+            opacity: 0;
+
+            .title {
+              @include text(600, 5.6rem, 1.2);
+              font-family: $en;
+            }
+
+            .text {
+              @include text(400, 2.4rem, 1.4, $black, -0.01em);
+            }
+
+            .utilBox {
+              display: flex;
+              align-items: center;
+              gap: 2rem;
+
+              .page {
+                @include text(400, 1.6rem, 1.6);
+                font-family: $en;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.section5 {
+  padding-top: 15rem;
+}
+
+@include response("mobile") {
+  .careerSection {
+    padding: 8rem 0 0;
+
+    .innerWrap {
+      padding: 0;
+    }
+
+    .flowText,
+    .viewAllBtn {
+      display: none;
+    }
+
+    .sectionTitle {
+      margin-bottom: 4rem;
+      padding: 0 2.4rem;
+    }
+
+    .sliderWrap {
+      .background {
+        top: auto;
+        bottom: 0;
+        max-width: 100%;
+        height: 34.3rem;
+      }
+
+      .careerSlider {
+        :global(.slick-list) {
+          padding-top: 0;
+
+          .careerInfo {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            .thumbnail {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+              right: 0;
+              top: 0;
+              width: 100%;
+              height: auto;
+              padding-left: 2.4rem;
+            }
+
+            .info {
+              gap: 3rem;
+              padding: 4rem 3.2rem;
+
+              .title {
+                @include text(600, 2.4rem, 1.4);
+              }
+
+              .text {
+                @include text(400, 1.6rem, 1.6, $black, -0.01em);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .section5 {
+    padding-top: 5rem;
+  }
+} 

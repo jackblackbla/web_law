@@ -1,0 +1,151 @@
+@use "variables" as *;
+
+// Media query mixins
+@mixin respond($breakpoint) {
+  @if $breakpoint == "mobile" {
+    @media screen and (max-width: $breakpoint-mobile) {
+      @content;
+    }
+  }
+  @if $breakpoint == "tablet" {
+    @media screen and (max-width: $breakpoint-tablet) {
+      @content;
+    }
+  }
+  @if $breakpoint == "desktop" {
+    @media screen and (max-width: $breakpoint-desktop) {
+      @content;
+    }
+  }
+  @if $breakpoint == "wide" {
+    @media screen and (max-width: $breakpoint-wide) {
+      @content;
+    }
+  }
+}
+
+// Flexbox mixins
+@mixin flex($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// Grid mixins
+@mixin grid($columns: 1, $gap: 0) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Position mixins
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+// Background image mixin
+@mixin backgroundImg($url, $position: center, $size: cover) {
+  background-image: url($url);
+  background-position: $position;
+  background-size: $size;
+  background-repeat: no-repeat;
+}
+
+// 텍스트 스타일 믹스인
+@mixin text($weight, $size, $height, $color: $black, $spacing: 0) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+  color: $color;
+  letter-spacing: $spacing;
+}
+
+// 말줄임표 믹스인
+@mixin ellipsis($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+  }
+}
+
+// Flex 센터 정렬 믹스인
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// 스크롤바 숨김 믹스인
+@mixin hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// 버튼 기본 스타일 믹스인
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 2.4rem;
+  border-radius: 0.4rem;
+  font-weight: $weight-medium;
+  transition: $transition-base;
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// 애니메이션 믹스인
+@mixin fadeIn($duration: 0.3s) {
+  animation: fadeIn $duration ease-in-out;
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+// 반응형 컨테이너 믹스인
+@mixin container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@mixin multiEllipsis($line: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin response($device) {
+  @if $device == "mobile" {
+    @media screen and (max-width: $mobile) {
+      @content;
+    }
+  }
+}

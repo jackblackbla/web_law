@@ -1,0 +1,113 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba($black, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.modal {
+  position: relative;
+  background-color: $white;
+  border-radius: 0.8rem;
+  box-shadow: 0 0.4rem 2.4rem rgba($black, 0.12);
+  max-height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease-out;
+
+  // 모달 사이즈 변형
+  &--sm {
+    width: 40rem;
+  }
+
+  &--md {
+    width: 56rem;
+  }
+
+  &--lg {
+    width: 72rem;
+  }
+
+  @include respond(mobile) {
+    width: 100% !important; // 모바일에서는 사이즈 무시하고 꽉 채움
+    max-width: 100%;
+    border-radius: 0;
+  }
+}
+
+.title {
+  padding: 2.4rem;
+  font-size: 2rem;
+  font-weight: $weight-bold;
+  border-bottom: 1px solid $gray-04;
+
+  @include respond(mobile) {
+    padding: 1.6rem;
+    font-size: 1.8rem;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  color: $gray-02;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  z-index: 1;
+
+  &:hover {
+    color: $black;
+  }
+
+  @include respond(mobile) {
+    top: 1.2rem;
+    right: 1.2rem;
+  }
+}
+
+.content {
+  padding: 2.4rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @include respond(mobile) {
+    padding: 1.6rem;
+  }
+}
+
+// 애니메이션
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+} 

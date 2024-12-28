@@ -1,0 +1,653 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+// 공통 스타일
+.innerWrap {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionTitle {
+  font-size: 3.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+
+  @include respond(mobile) {
+    font-size: 2.4rem;
+    margin-bottom: 3rem;
+  }
+}
+
+// Hero 섹션
+.heroSection {
+  position: relative;
+  padding: 20rem 0 40rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.7)
+  ),
+  url('/images/hero/main-visual.jpg') no-repeat center/cover;
+  overflow: hidden;
+
+  .innerWrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
+
+    .textBox {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      padding: 16rem 0 0 12rem;
+
+      strong {
+        display: block;
+        font-family: $kr;
+        font-size: 6.4rem;
+        font-weight: $bold;
+        line-height: 1.2;
+        color: $white;
+
+        .titDot {
+          display: block;
+          
+          &:nth-of-type(2) {
+            padding-left: 13rem;
+          }
+        }
+      }
+
+      .text {
+        display: block;
+        margin-top: 3rem;
+        font-family: $kr;
+        font-size: 2.4rem;
+        font-weight: $regular;
+        line-height: 1.6;
+        color: #eee;
+      }
+    }
+
+    .circleBox {
+      position: absolute;
+      right: 0;
+      bottom: -20rem;
+      width: 100%;
+      height: 100%;
+      
+      .left {
+        position: absolute;
+        left: 10rem;
+        bottom: 0;
+        width: 40rem;
+        height: 40rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+      }
+
+      .right {
+        position: absolute;
+        right: 10rem;
+        bottom: 0;
+        width: 40rem;
+        height: 40rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        overflow: hidden;
+
+        .inner {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: calc(100% - 2px);
+          height: calc(100% - 2px);
+          border-radius: 50%;
+          overflow: hidden;
+
+          video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            &.on {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .scroll {
+    position: absolute;
+    right: 4rem;
+    top: 48rem;
+    transform: rotate(-90deg);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    cursor: pointer;
+    
+    span {
+      font-family: $en;
+      font-size: 1.6rem;
+      font-weight: $regular;
+      line-height: 1.6;
+      color: $white;
+
+      &::before {
+        content: "";
+        display: block;
+        width: 2.7rem;
+        height: 4.3rem;
+        transform: rotate(90deg);
+        @include backgroundImg("/images/icon/ico-scroll-arrow.svg", "center", "contain");
+      }
+    }
+  }
+}
+
+@include respond("tablet") {
+  .heroSection {
+    .innerWrap {
+      .textBox {
+        padding: 12rem 3rem 0;
+
+        strong {
+          font-size: 5rem;
+        }
+
+        .text {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
+@include respond("mobile") {
+  .heroSection {
+    padding: 15rem 0 30rem;
+
+    .innerWrap {
+      .textBox {
+        padding: 10rem 2rem 0;
+
+        strong {
+          font-size: 4rem;
+
+          .titDot:nth-of-type(2) {
+            padding-left: 6rem;
+          }
+        }
+
+        .text {
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+    .scroll {
+      display: none;
+    }
+  }
+}
+
+// 서비스 섹션
+.serviceSection {
+  padding: $spacing-xl 0;
+  background-color: $bg-white;
+
+  .innerWrap {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .sectionTitle {
+    font-size: 10rem;
+    color: #1c1c1c;
+    letter-spacing: 0;
+    display: flex;
+    align-items: flex-end;
+    gap: 0.8rem;
+    line-height: 1;
+    font-weight: 700;
+    font-family: 'Lora', serif;
+    text-transform: uppercase;
+    transition-property: opacity, transform;
+    transition-timing-function: ease;
+    transition-duration: 1s;
+    opacity: 1;
+    transform: translateZ(0);
+    margin-bottom: 8rem;
+
+    &::after {
+      content: "";
+      width: 1.6rem;
+      height: 1.6rem;
+      margin-bottom: 0.7rem;
+      border-radius: 50%;
+      background-color: #ffe141;
+    }
+  }
+
+  .serviceList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      width: 100%;
+      border: 1px solid $gray-04;
+      border-radius: 0.8rem;
+      overflow: hidden;
+      background-color: $white;
+      box-shadow: 0 2px 4px rgba($black, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-0.4rem);
+        box-shadow: 0 4px 8px rgba($black, 0.1);
+      }
+    }
+
+    .serviceImage {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+    }
+
+    .serviceContent {
+      padding: 2rem;
+
+      h3 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1.2rem;
+        color: $black;
+      }
+
+      p {
+        font-size: 1.4rem;
+        line-height: 1.6;
+        color: $gray-02;
+      }
+    }
+  }
+}
+
+// 반응형
+@include respond("tablet") {
+  .serviceSection {
+    .serviceList {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+}
+
+@include respond("mobile") {
+  .serviceSection {
+    padding: $spacing-lg 0;
+
+    .innerWrap {
+      padding: 0 1.6rem;
+    }
+
+    .serviceList {
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+    }
+
+    .sectionTitle {
+      font-size: $h3-size;
+      margin-bottom: $spacing-md;
+    }
+  }
+}
+
+// 인사이트 섹션
+.insightSection {
+  position: relative;
+  padding: 12rem 0;
+  
+  .bg {
+    position: absolute;
+    left: 0;
+    top: 6.7rem;
+    width: 100%;
+    height: 78.3rem;
+    background-color: rgba(245, 245, 245, 0.6);
+    z-index: 0;
+  }
+
+  .innerWrap {
+    position: relative;
+    max-width: 160rem;
+    margin: 0 auto;
+    padding: 0 4rem;
+    z-index: 1;
+
+    .sectionTitle {
+      font-size: 10rem;
+      color: #1c1c1c;
+      letter-spacing: 0;
+      display: flex;
+      align-items: flex-end;
+      gap: 0.8rem;
+      line-height: 1;
+      font-weight: 700;
+      font-family: 'Lora', serif;
+      text-transform: uppercase;
+      margin-bottom: 8rem;
+      transition-property: opacity, transform;
+      transition-timing-function: ease;
+      transition-duration: 1s;
+      opacity: 1;
+      transform: translateZ(0);
+      
+      &::after {
+        content: "";
+        width: 1.6rem;
+        height: 1.6rem;
+        margin-bottom: 0.7rem;
+        border-radius: 50%;
+        background-color: #ffe141;
+      }
+    }
+  }
+
+  .slickSlider {
+    position: relative;
+    display: block;
+    padding-left: 32rem;
+    user-select: none;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+
+    :global {
+      .slick-track {
+        display: flex !important;
+        gap: 3.2rem;
+        
+        &:before,
+        &:after {
+          display: table;
+          content: "";
+        }
+        
+        &:after {
+          clear: both;
+        }
+      }
+
+      .slick-list {
+        margin: 0 -1.6rem;
+        overflow: hidden;
+      }
+
+      .slick-slide {
+        float: left;
+        height: 100%;
+        min-height: 1px;
+        padding: 0 1.6rem;
+      }
+    }
+  }
+
+  .slideItem {
+    a {
+      display: block;
+      width: 51.2rem;
+      color: #1c1c1c;
+      text-decoration: none;
+      
+      .imageWrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 35rem;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+          transform: scale(1.1);
+        }
+      }
+
+      .contentBox {
+        width: 45rem;
+        background: #fff;
+        box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.05);
+        border: 4px solid #FFE141;
+        padding: 4rem;
+        margin: -17.5rem 0 0 6.2rem;
+        position: relative;
+
+        .title {
+          display: block;
+          font-size: 2.4rem;
+          line-height: 1.4;
+          font-weight: 400;
+          text-decoration: underline;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+
+        .desc {
+          margin: 4rem 0 2rem;
+          font-size: 1.6rem;
+          line-height: 1.6;
+          color: #555;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+
+        .date {
+          display: block;
+          font-size: 1.4rem;
+          color: #888;
+        }
+      }
+    }
+  }
+
+  .boxBoardMore {
+    margin-top: 6rem;
+    position: absolute;
+    left: 0;
+    top: 15rem;
+
+    .btnCircleAni {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 1.6rem;
+      color: #1c1c1c;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      i {
+        display: block;
+        width: 4.8rem;
+        height: 4.8rem;
+        border: 1px solid #1c1c1c;
+        border-radius: 50%;
+        position: relative;
+        transition: all 0.3s ease;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 1.2rem;
+          height: 1px;
+          background: #1c1c1c;
+          transform: translate(-50%, -50%);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 1px;
+          height: 1.2rem;
+          background: #1c1c1c;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      &:hover {
+        color: #ffe141;
+        
+        i {
+          border-color: #ffe141;
+          transform: rotate(180deg);
+
+          &::before,
+          &::after {
+            background: #ffe141;
+          }
+        }
+      }
+    }
+
+    .sliderButtons {
+      display: flex;
+      gap: 5rem;
+      margin-top: 5rem;
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4.2rem;
+        height: 4.2rem;
+        border-radius: 50%;
+        border: 1px solid #1c1c1c;
+        font-size: 0;
+        cursor: pointer;
+        background: transparent;
+        transition: all 0.3s ease;
+
+        &::before {
+          content: '';
+          width: 0.8rem;
+          height: 0.8rem;
+          border-top: 1px solid #1c1c1c;
+          border-right: 1px solid #1c1c1c;
+          transition: border-color 0.3s ease;
+        }
+
+        &:hover {
+          border-color: #ffe141;
+          
+          &::before {
+            border-color: #ffe141;
+          }
+        }
+      }
+
+      .sliderPrev::before {
+        transform: rotate(-135deg);
+        margin-left: 0.3rem;
+      }
+
+      .sliderNext::before {
+        transform: rotate(45deg);
+        margin-right: 0.3rem;
+      }
+    }
+  }
+}
+
+// CTA 섹션
+.ctaSection {
+  padding: 12rem 0;
+  background-color: $black;
+  text-align: center;
+
+  @include respond(mobile) {
+    padding: 8rem 0;
+  }
+
+  .innerWrap {
+    h2 {
+      font-size: 4rem;
+      font-weight: 700;
+      color: $white;
+      margin-bottom: 2rem;
+
+      @include respond(mobile) {
+        font-size: 2.8rem;
+      }
+    }
+
+    p {
+      font-size: 1.8rem;
+      color: $gray-03;
+      margin-bottom: 4rem;
+
+      @include respond(mobile) {
+        font-size: 1.6rem;
+        margin-bottom: 3rem;
+      }
+    }
+  }
+} 
+
+// 반응형 처리
+@include respond("tablet") {
+  .heroSection .heroInner,
+  .insightSection .innerWrap,
+  .ctaSection .innerWrap {
+    padding: 0 3rem;
+  }
+}
+
+@include respond("mobile") {
+  .heroSection .heroInner,
+  .insightSection .innerWrap,
+  .ctaSection .innerWrap {
+    padding: 0 2rem;
+  }
+} 

@@ -1,0 +1,153 @@
+@use '../../styles/utils/mixins' as *;
+@use '../../styles/utils/variables' as *;
+
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 800px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.7)
+  ),
+  url('/images/hero/main-visual.jpg') no-repeat center/cover;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .inner {
+    max-width: 100rem;
+    margin: 0 auto;
+    padding: 0 4rem;
+    color: $white;
+  }
+
+  .title {
+    font-family: $en;
+    font-size: 7.2rem;
+    font-weight: $bold;
+    line-height: 1.5;
+    margin-bottom: 4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-family: $kr;
+    font-size: 2.8rem;
+    font-weight: $regular;
+    line-height: 1.6;
+    margin-bottom: 5rem;
+    color: #eee;
+    br {
+      display: none;
+    }
+  }
+
+  .ctaBtn {
+    font-size: 2rem;
+    font-weight: $medium;
+    color: $black;
+    background-color: $white;
+    padding: 2.4rem 5rem;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $accent;
+      transform: translateY(-2px);
+    }
+  }
+
+  .scroll {
+    position: absolute;
+    bottom: 5rem;
+    width: 100%;
+    text-align: center;
+    
+    span {
+      font-family: $en;
+      font-size: 1.8rem;
+      font-weight: $regular;
+      color: $white;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+
+      &::before {
+        content: "";
+        display: block;
+        width: 2.4rem;
+        height: 2.4rem;
+        margin: 0 auto 1.2rem;
+        background: url('/images/icon/ico-scroll-arrow.svg') no-repeat center/contain;
+      }
+    }
+  }
+
+  // 스크롤 시 페이드 아웃 효과
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  
+  &.scrolled {
+    opacity: 0.6;
+    transform: translateY(-50px);
+  }
+}
+
+@include respond("tablet") {
+  .heroSection {
+    min-height: 700px;
+
+    .title {
+      font-size: 6rem;
+      margin-bottom: 3rem;
+    }
+
+    .subtitle {
+      font-size: 2.4rem;
+      br {
+        display: block;
+      }
+    }
+
+    .ctaBtn {
+      font-size: 1.8rem;
+      padding: 2rem 4rem;
+    }
+  }
+}
+
+@include respond("mobile") {
+  .heroSection {
+    min-height: 600px;
+
+    .inner {
+      padding: 0 2.4rem;
+    }
+
+    .title {
+      font-size: 4.2rem;
+      line-height: 1.4;
+      margin-bottom: 2.4rem;
+    }
+
+    .subtitle {
+      font-size: 2rem;
+      margin-bottom: 3.6rem;
+    }
+
+    .ctaBtn {
+      font-size: 1.6rem;
+      padding: 1.8rem 3.6rem;
+    }
+
+    .scroll {
+      display: none;
+    }
+  }
+} 

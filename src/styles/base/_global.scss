@@ -1,0 +1,36 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: $kr;
+  font-size: 62.5%;
+}
+
+body {
+  color: $primary;
+  background: $white;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+} 

@@ -1,0 +1,61 @@
+// Fonts
+$en: 'Lora', serif;
+$kr: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+
+// Font weights
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+
+// Colors
+$primary: #1c1c1c;     // 주 색상
+$secondary: #666666;    // 보조 색상
+$accent: #ffe141;      // 강조 색상
+
+$white: #ffffff;
+$black: #000000;
+
+$gray-01: #1c1c1c;
+$gray-02: #666666;
+$gray-03: #999999;
+$gray-04: #cccccc;
+$gray-05: #eeeeee;
+
+// Background Colors
+$bg-light: #fafafa;
+$bg-white: #ffffff;
+$bg-overlay: rgba(245, 245, 245, 0.2);
+
+// Typography Scale
+$h1-size: 5.6rem;
+$h2-size: 4.8rem;
+$h3-size: 3.2rem;
+$body-size: 1.6rem;
+$small-size: 1.4rem;
+
+// Line Heights
+$heading-line-height: 1.3;
+$body-line-height: 1.75;
+
+// Spacing
+$spacing-xs: 1.2rem;
+$spacing-sm: 2.4rem;
+$spacing-md: 4rem;
+$spacing-lg: 8rem;
+$spacing-xl: 12rem;
+
+// Animation
+$transition-fast: 0.3s ease;
+$transition-normal: 0.4s ease;
+$transition-slow: 0.6s ease;
+
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1200px;
+
+// Layout
+$container-width: 1600px;
+$header-height: 8rem;

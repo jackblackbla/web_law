@@ -1,0 +1,31 @@
+@use '../../utils/variables' as *;
+@use '../../utils/mixins' as *;
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+
+    &.hidden {
+      transform: translateY(-100%);
+    }
+  }
+
+  .main {
+    flex: 1;
+    margin-top: var(--header-height, 80px);
+  }
+
+  .footer {
+    // 기존 footer 스타일 유지
+  }
+} 

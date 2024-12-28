@@ -1,0 +1,51 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.cardList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  gap: 2.4rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: $container-width;
+  margin: 0 auto;
+
+  // 섹션 타이틀이 있다면
+  .sectionTitle {
+    grid-column: 1 / -1;  // 전체 너비 차지
+    font-family: $en;
+    font-size: $h2-size;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+// 반응형 처리
+@include respond("desktop") {
+  .cardList {
+    grid-template-columns: repeat(3, 1fr);  // 데스크탑: 3열
+    padding: 4rem 2rem;
+  }
+}
+
+@include respond("tablet") {
+  .cardList {
+    grid-template-columns: repeat(2, 1fr);  // 태블릿: 2열
+    gap: 2rem;
+    padding: 3rem 1.6rem;
+  }
+}
+
+@include respond("mobile") {
+  .cardList {
+    grid-template-columns: 1fr;  // 모바일: 1열
+    gap: 1.6rem;
+    padding: 2rem 1.2rem;
+
+    .sectionTitle {
+      font-size: $h3-size;
+      margin-bottom: $spacing-md;
+    }
+  }
+}

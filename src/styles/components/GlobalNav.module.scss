@@ -1,0 +1,232 @@
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+.globalNav {
+  flex: 1;
+  margin: 0 4rem;
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      position: relative;
+      
+      > a {
+        display: block;
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: $black;
+        text-decoration: none;
+        padding: 1rem 0;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: $accent;
+        }
+      }
+
+      &.active > a {
+        color: $accent;
+        font-weight: 600;
+      }
+
+      // 드롭다운 메뉴
+      .dropDown {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 20rem;
+        background: white;
+        border-radius: 0.8rem;
+        padding: 1.2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 100;
+
+        li {
+          margin: 0.4rem 0;
+
+          a {
+            display: block;
+            font-size: 1.6rem;
+            color: $gray-01;
+            text-decoration: none;
+            padding: 1rem 1.6rem;
+            border-radius: 0.4rem;
+            transition: all 0.2s ease;
+
+            &:hover {
+              background-color: $gray-05;
+              color: $accent;
+            }
+          }
+
+          &.active a {
+            background-color: $gray-05;
+            color: $accent;
+            font-weight: 500;
+          }
+        }
+      }
+
+      &:hover .dropDown {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+// 햄버거 버튼
+.hamburger {
+  display: none;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $black;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+
+    &:first-child {
+      top: 25%;
+    }
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:last-child {
+      bottom: 25%;
+    }
+  }
+
+  &.active {
+    span {
+      &:first-child {
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:last-child {
+        bottom: 50%;
+        transform: translateY(50%) rotate(-45deg);
+      }
+    }
+  }
+}
+
+// 모바일 대응
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .globalNav {
+    position: fixed;
+    top: 6rem; // 헤더 높이에 맞춤
+    left: 0;
+    width: 100vw; // 전체 뷰포트 너비
+    height: calc(100vh - 6rem); // 헤더 높이를 뺀 전체 높이
+    background: white;
+    padding: 0; // 패딩 제거
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    z-index: 99;
+
+    &.mobileOpen {
+      transform: translateX(0);
+    }
+
+    ul {
+      flex-direction: column;
+      align-items: stretch; // 변경
+      width: 100%; // 추가
+      gap: 0;
+      padding: 1.6rem; // 내부 패딩 추가
+
+      > li {
+        width: 100%;
+        border-bottom: 1px solid $gray-05;
+
+        > a {
+          font-size: 1.8rem;
+          padding: 1.6rem;
+          width: 100%; // 추가
+          display: block;
+        }
+
+        .dropDown {
+          position: static;
+          transform: none;
+          box-shadow: none;
+          width: 100%; // 추가
+          padding: 0.8rem 0 0.8rem 2rem;
+          opacity: 1;
+          visibility: visible;
+          background: transparent;
+          
+          li {
+            width: 100%; // 추가
+            
+            a {
+              padding: 1.2rem;
+              width: 100%; // 추가
+              display: block;
+              font-size: 1.6rem;
+              
+              &:hover {
+                background: $gray-05;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .globalNav {
+    top: 5.6rem; // 더 작은 화면에서 헤더 높이 조정
+    height: calc(100vh - 5.6rem);
+
+    ul {
+      padding: 1.2rem;
+
+      > li > a {
+        font-size: 1.6rem;
+        padding: 1.4rem;
+      }
+
+      .dropDown {
+        padding: 0.6rem 0 0.6rem 1.6rem;
+        
+        li a {
+          padding: 1rem;
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+} 
