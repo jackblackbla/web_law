@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # OS/IDE
 .DS_Store
 .vscode/
@@ -32,3 +33,20 @@ coverage/
 # PWA 관련
 public/sw.js
 public/workbox-*.js
+=======
+# Node modules
+node_modules/
+
+# 빌드 결과물
+dist/
+.parcel-cache/
+build/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.log
+
+# 환경변수, 개인키
+.env
+>>>>>>> 6ea8385b29781388c77f45dfd6a9001e91ed9e73
