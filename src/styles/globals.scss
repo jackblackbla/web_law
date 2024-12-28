@@ -1,0 +1,63 @@
+@use 'utils/variables' as *;
+@use 'utils/mixins' as *;
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/global';
+
+// 필요한 다른 전역 스타일 import 
+
+ol, ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  outline: 0;
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+}
+
+body {
+  color: #1c1c1c;
+  font-family: NotoSansCJKkr, "Malgun Gothic", "맑은 고딕", "돋움", Dotum, "굴림", Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --head: 100px;
+  --footer: 574.688px;
+  --mfooter: -574.688px;
+  --height: 1328px;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.25;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  word-break: keep-all;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+  unicode-bidi: isolate;
+} 
